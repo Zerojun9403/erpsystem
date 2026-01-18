@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>내 정보</title>
+</head>
+<body>
+
+<h2>내 정보</h2>
+
+<p>이름: <span th:text="${user.name}"></span></p>
+<p>사번: <span th:text="${user.employeeNo}"></span></p>
+<p>이메일: <span th:text="${user.email}"></span></p>
+<p>직급:
+    <span th:text="${user.role == T(com.erp.erp.domain.UserRole).ROLE_ADMIN ? '관리자' : '직원'}"></span>
+</p>
+
+<hr>
+
+<h3>휴가</h3>
+<a href="/vacations/new">휴가 신청</a><br>
+<a href="/vacations/my">내 휴가 신청 내역</a>
+
+<br><br>
+<a href="/logout">로그아웃</a>
+
+</body>
+</html>

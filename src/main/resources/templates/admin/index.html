@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <title>관리자 페이지</title>
+</head>
+<body>
+
+<h1>관리자 페이지</h1>
+
+<ul>
+  <li><a th:href="@{/admin/users}">직원 목록</a></li>
+  <li><a th:href="@{/admin/users/new}">직원 등록</a></li>
+</ul>
+<!-- 관리자 전용 영역 -->
+<div sec:authorize="hasRole('ADMIN')">
+  <h2>관리자 메뉴</h2>
+  <a href="/admin/vacations">👉 휴가 승인 페이지</a>
+</div>
+
+<!-- 직원 전용 영역 -->
+<div sec:authorize="hasRole('EMPLOYEE')">
+  <h2>직원 메뉴</h2>
+  <a href="/vacations/new">👉 휴가 신청</a>
+</div>
+<form th:action="@{/logout}" method="post">
+  <button type="submit">로그아웃</button>
+</form>
+
+</body>
+</html>
